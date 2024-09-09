@@ -1,0 +1,49 @@
+table {
+    width: 100%;
+    // overflow-x: auto;
+  }
+
+  .searchWrapper{
+    padding: 5px;
+    overflow-x: auto;
+    gap: 25px;
+  }
+
+  .mat-row:hover {
+    background: #eee;
+  }
+  
+  .mat-row:active {
+  background-color: #999; 
+  }
+  
+  .mat-row.highlighted{
+    background: #999;
+  }
+
+  .mobile-label {
+    display: none;
+  }
+  
+  @media(max-width: 600px) {
+    .mobile-label {
+      width: 80px;
+      display: inline-block;
+          font-weight: bold;
+    }
+  
+    .mat-header-row {
+      display: none;
+    }
+  
+    .mat-row { 
+      flex-direction: column;
+      align-items: start;
+      padding: 8px 24px;
+    }
+  }
+
+  .image{
+    mix-blend-mode: multiply;
+    filter: contrast(1);
+  }

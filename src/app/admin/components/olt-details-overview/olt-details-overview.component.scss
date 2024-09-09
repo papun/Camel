@@ -1,0 +1,90 @@
+table {
+  width: 100%;
+  overflow-x: scroll;
+}
+
+.searchWrapper{
+  padding: 5px;
+  overflow-x: auto;
+  gap: 25px;
+}
+
+.mat-row:hover {
+  background: #eee;
+}
+
+.mat-row:active {
+background-color: #999; 
+}
+
+.mat-row.highlighted{
+  background: #999;
+}
+
+.mobile-label {
+  display: none;
+}
+
+@media(max-width: 600px) {
+  .mobile-label {
+    width: 80px;
+    display: inline-block;
+        font-weight: bold;
+  }
+
+  .mat-header-row {
+    display: none;
+  }
+
+  .mat-row { 
+    flex-direction: column;
+    align-items: start;
+    padding: 8px 24px;
+  }
+}
+
+.image{
+  mix-blend-mode: multiply;
+  filter: contrast(1);
+}
+
+mat-grid-tile {
+  overflow: auto;
+}
+
+/* Add application styles & imports to this file! */
+
+.bounds {
+// background-color:#ddd;
+// height :800px;
+}
+
+.sec1 {
+// background: red;
+// color:white;
+// text-transform: uppercase
+}
+
+.sec2 {
+// background: yellow;
+// color:blue;
+
+}
+
+.sec1, .sec2 {
+padding-top:20px;
+text-align:center
+}
+
+.content {
+min-width: 300px;
+/*height: 400px;*/
+}
+mat-card{
+overflow: auto;
+}
+.migrate {
+display: flex;
+align-items: center;
+justify-content: center;
+}

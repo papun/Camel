@@ -1,0 +1,112 @@
+<div class="searchWrapper">
+
+
+  <td>
+    <mat-form-field class="searchWrapper">
+      <mat-label>Search </mat-label>
+      <input matInput [formControl]="searchKeywordFilter" placeholder="Type to Search" #input
+        (keyup)="applyFilter($event)" />
+    </mat-form-field>
+  </td>
+
+  <td>
+    <div class="example-container">
+      <mat-checkbox>Hide required marker</mat-checkbox>
+    </div>
+  </td>
+
+  <td>
+    <div class="example-container">
+      <mat-checkbox>Hide required marker</mat-checkbox>
+    </div>
+  </td>
+  <td>
+    <button mat-button>
+      <mat-icon>autorenew</mat-icon>
+    </button>
+  </td>
+
+  <!-- <mat-divider></mat-divider> -->
+  <table mat-table [dataSource]="dataSource" matSort >
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="hostName">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> HostName </th>
+      <td mat-cell *matCellDef="let element"> {{element.hostName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+      <td mat-cell *matCellDef="let element"> {{element.city}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deviceType">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> DeviceType </th>
+      <td mat-cell *matCellDef="let element"> {{element.deviceType}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="vendor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Vendor </th>
+      <td mat-cell *matCellDef="let element"> {{element.vendor}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="popId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> PopId </th>
+      <td mat-cell *matCellDef="let element"> {{element.popId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="popLocation">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> PopLocation </th>
+      <td mat-cell *matCellDef="let element"> {{element.popLocation}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="migrated">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Migrated </th>
+      <td mat-cell *matCellDef="let element"> {{element.migrated}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deviceId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> DeviceId </th>
+      <td mat-cell *matCellDef="let element"> {{element.deviceId}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button mat-button (click)="$event.stopPropagation();migrate(element)">
+          <img src="migrate.png" height="25px" width="25px" class="image" >
+        </button>
+        </td>
+    </ng-container>
+    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row);select(row)"
+      class="mat-row" [ngClass]="{hovered: row.hovered, highlighted: selection.isSelected(row)}"
+      (mouseover)="row.hovered = true" (mouseout)="row.hovered = false">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 7, 20]" showFirstLastButtons aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
